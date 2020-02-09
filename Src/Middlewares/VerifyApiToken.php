@@ -3,8 +3,8 @@
 namespace ApiCsrfProtection\Middlewares;
 
 use Closure;
-use App\Services\Auth\ApiCsrfVerification;
 use ApiCsrfProtection\Exceptions\ApiException;
+use ApiCsrfProtection\Services\VerifyTokenService;
 
 class VerifyApiToken
 {
@@ -20,11 +20,10 @@ class VerifyApiToken
             throw new ApiException("Token Invalid", 400);
         }
 
-        if (ApiCsrfVerification::tokenIsValid($token)) {
+        if (VerifyTokenService::tokenIsValid($token)) {
             return $next($request);
         }
 
         throw new ApiException("Token Invalid", 400);
-    }
     }
 }

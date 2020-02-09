@@ -6,7 +6,6 @@ use phpseclib\Crypt\RSA;
 use ApiCsrfProtection\Model\ApiToken;
 use ApiCsrfProtection\Exceptions\ApiException;
 
-
 class VerifyTokenService
 {
     public static function tokenIsValid(array $token)

@@ -14,12 +14,14 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "ApiCsrfProtection\\": "Src:/"
+            "ApiCsrfProtection\\": "Src/"
         }
     },
     "extra": {
         "laravel": {
-            "providers": "ApiCsrfProtection\\Providers\\ApiCsrfProtectionServiceProvider"
+            "providers": [
+                "ApiCsrfProtection\\Providers\\ApiCsrfProtectionServiceProvider"
+            ]
         }
     }
 }
