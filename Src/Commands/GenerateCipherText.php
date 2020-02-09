@@ -4,24 +4,25 @@ namespace ApiCsrfProtection\Commands;
 
 
 use phpseclib\Crypt\RSA;
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
-class CreateEncryptionKeys extends Command
+class GenerateCipherText extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'createencrytionkeys';
+    protected $signature = 'generateciphertext';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create Public And Private Keys';
+    protected $description = 'Generate Cipher And Plain Text';
 
     /**
      * Create a new command instance.
@@ -40,11 +41,16 @@ class CreateEncryptionKeys extends Command
      */
     public function handle()
     {
-        $rsa = new RSA();
-        $keys = $rsa->createKey();
-        $privateKey = $keys['privatekey'];
-        $publicKey = $keys['publickey'];
-        Storage::disk('local')->put('keys/publicKey.pem', $publicKey);
-        Storage::disk('local')->put('keys/privateKey.pem', $privateKey);
+        $random_text = Str::random(15);
+
+        $rsa = new RSA;
+        
+        $rsa->loadKey(file_get_contents(storage_path('app/keys/publicKey.pem')));
+
+        $cipher_text = base64_encode($rsa->encrypt($random_text));
+
+        $this->line("Plain Text : $random_text ");
+
+        $this->line("Cipher Text : $cipher_text ");
     }
 }
