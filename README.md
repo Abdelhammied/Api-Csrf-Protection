@@ -1,7 +1,7 @@
 # Api-Csrf-Protection
 This Package is used to secure apis from any cross sites request forgery while wroking with mobile applications using rsa assemetric key with two ways authentication with your mobile team / any one who wants to interact with your apis 
 
-** This Package uses phpseclib/phpseclib **
+**This Package uses phpseclib/phpseclib**
 
 ## Installation
 
