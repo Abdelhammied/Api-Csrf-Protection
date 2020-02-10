@@ -14,10 +14,10 @@ composer require abdelhammied/api-csrf-protection
 We Are Setting Every Thing To You We Only Need Your Support And Have Fun With Our Package
 
 ## Usage
-
-#### Create Keys 
-You Can Create Public and private keys using ```php artisan createencrytionkeys``` This will create public key and private keys at storage/app/keys, share the public keys with your mobile team. 
-from the mobile team side start to create a random string with each non get request, use the public key to hask the string after that use base64_encode , send the data with the request .
+1. Create Public and private keys using  ```php artisan createencrytionkeys``` This will create public key and private keys at ```storage/app/keys```, share the public keys with your mobile team.
+2. Start to define the middleware as route middleware at ``` app/Http/Kernel.php ``` using this middleware ```\ApiCsrfProtection\Middlewares\VerifyApiToken::class```
+3. You can define which apis to be secured with the package ``` should be Not GET method ```
+4. from the mobile team side start to create a random string with each not GET request, use the public key to hash the string after that use base64_encode with the hased value, send the data with the request like: 
 
 ```json
 {
@@ -30,3 +30,4 @@ from the mobile team side start to create a random string with each non get requ
 
 ### For Any Inquires please contact us : 
 ``` abdelhammied@gmail.com ```
+ 
