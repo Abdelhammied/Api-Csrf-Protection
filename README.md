@@ -16,15 +16,8 @@ We Are Setting Every Thing To You We Only Need Your Support And Have Fun With Ou
 ## Usage
 
 #### Create Keys 
-You Can Create Public and private keys using 
-
-```php
-php artisan createencrytionkeys
-```
-
-### Start To Share The Public Key With Your Mobile Team .. 
-### Let The Mobile Team Create A Random String Then Encrypt This String Using The Public Key 
-### After That Convert This Encryption into base64_encode
+You Can Create Public and private keys using ```php php artisan createencrytionkeys``` This will create public key and private keys at storage/app/keys, share the public keys with your mobile team. 
+from the mobile team side start to create a random string with each non get request, use the public key to hask the string after that use base64_encode , send the data with the request .
 
 ```json
 {
@@ -34,5 +27,6 @@ php artisan createencrytionkeys
   }
 }
 ```
+
 ### For Any Inquires please contact us : 
 ``` abdelhammied@gmail.com ```
