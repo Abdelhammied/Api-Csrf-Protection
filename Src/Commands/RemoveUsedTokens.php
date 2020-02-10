@@ -2,26 +2,23 @@
 
 namespace ApiCsrfProtection\Commands;
 
-
-use phpseclib\Crypt\RSA;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
-class CreateEncryptionKeys extends Command
+class RemoveUsedTokens extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'api-csrf-protection:create-encryption-keys';
+    protected $signature = 'api-csrf-protection:remove-used-tokens';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create Public And Private Keys';
+    protected $description = 'Remove Used Tokens';
 
     /**
      * Create a new command instance.
@@ -40,11 +37,6 @@ class CreateEncryptionKeys extends Command
      */
     public function handle()
     {
-        $rsa = new RSA();
-        $keys = $rsa->createKey();
-        $privateKey = $keys['privatekey'];
-        $publicKey = $keys['publickey'];
-        Storage::disk('local')->put('keys/publicKey.pem', $publicKey);
-        Storage::disk('local')->put('keys/privateKey.pem', $privateKey);
+        \DB::table('api_tokens')->truncate();
     }
 }

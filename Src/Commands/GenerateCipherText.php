@@ -15,7 +15,7 @@ class GenerateCipherText extends Command
      *
      * @var string
      */
-    protected $signature = 'generateciphertext';
+    protected $signature = 'api-csrf-protection:generate-cipher-text';
 
     /**
      * The console command description.
