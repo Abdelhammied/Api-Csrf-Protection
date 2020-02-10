@@ -11,6 +11,7 @@
             "email": "abdelhammied@gmail.com"
         }
     ],
+    "version": "1.0.0",
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
