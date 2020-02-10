@@ -1,6 +1,11 @@
 {
     "name": "abdelhammied/api-csrf-protection",
     "description": "This Package is used to secure apis from any cross sites request forgery while wroking with mobile applications using rsa assemetric key",
+    "keywords": [
+        "api-csrf-protection",
+        "api-security",
+        "api-ddos-attack"
+    ],
     "require": {
         "phpseclib/phpseclib": "^2.0"
     },
@@ -11,8 +16,6 @@
             "email": "abdelhammied@gmail.com"
         }
     ],
-    "version": "1.0.0",
-    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "ApiCsrfProtection\\": "Src/"
