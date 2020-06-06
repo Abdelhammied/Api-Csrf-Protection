@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApiToken extends Model
 {
     protected $fillable = [
-        'token'
+        'token',
     ];
 
     public function getKey()

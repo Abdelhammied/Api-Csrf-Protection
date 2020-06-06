@@ -2,19 +2,19 @@
 
 namespace ApiCsrfProtection\Services;
 
-use phpseclib\Crypt\RSA;
-use ApiCsrfProtection\Model\ApiToken;
 use ApiCsrfProtection\Exceptions\ApiException;
+use ApiCsrfProtection\Model\ApiToken;
+use phpseclib\Crypt\RSA;
 
 class VerifyTokenService
 {
     public static function tokenIsValid(array $token)
     {
-        $apiCsrfVerification = new static;
+        $apiCsrfVerification = new static();
 
         $token = $apiCsrfVerification->tokenBodyValidation($token);
 
-        $rsa = new RSA;
+        $rsa = new RSA();
 
         $privateKey = file_get_contents(storage_path('app/keys/privateKey.pem'));
 
@@ -22,10 +22,10 @@ class VerifyTokenService
 
         try {
             return $rsa->decrypt(base64_decode($token['cipherText'])) == $token['plainText'] ? ApiToken::create([
-                'token' => $token['plainText']
+                'token' => $token['plainText'],
             ]) : false;
         } catch (\Throwable $ex) {
-            throw new ApiException("Invalid Token", 400);
+            throw new ApiException('Invalid Token', 400);
         }
     }
 
@@ -35,6 +35,6 @@ class VerifyTokenService
             return $token;
         }
 
-        throw new ApiException("Invalid Token Body", 400);
+        throw new ApiException('Invalid Token Body', 400);
     }
 }
