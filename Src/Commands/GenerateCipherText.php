@@ -2,11 +2,9 @@
 
 namespace ApiCsrfProtection\Commands;
 
-
-use phpseclib\Crypt\RSA;
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use phpseclib\Crypt\RSA;
 
 class GenerateCipherText extends Command
 {
@@ -43,8 +41,8 @@ class GenerateCipherText extends Command
     {
         $random_text = Str::random(15);
 
-        $rsa = new RSA;
-        
+        $rsa = new RSA();
+
         $rsa->loadKey(file_get_contents(storage_path('app/keys/publicKey.pem')));
 
         $cipher_text = base64_encode($rsa->encrypt($random_text));

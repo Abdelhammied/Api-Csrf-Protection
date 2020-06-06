@@ -2,9 +2,9 @@
 
 namespace ApiCsrfProtection\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use ApiCsrfProtection\Commands\CreateEncryptionKeys;
 use ApiCsrfProtection\Commands\GenerateCipherText;
+use Illuminate\Support\ServiceProvider;
 
 class ApiCsrfProtectionServiceProvider extends ServiceProvider
 {
@@ -24,10 +24,10 @@ class ApiCsrfProtectionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . "/../database/migrations");
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->commands([
             CreateEncryptionKeys::class,
-            GenerateCipherText::class
+            GenerateCipherText::class,
         ]);
     }
 }

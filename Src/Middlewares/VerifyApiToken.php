@@ -2,9 +2,9 @@
 
 namespace ApiCsrfProtection\Middlewares;
 
-use Closure;
 use ApiCsrfProtection\Exceptions\ApiException;
 use ApiCsrfProtection\Services\VerifyTokenService;
+use Closure;
 
 class VerifyApiToken
 {
@@ -17,13 +17,13 @@ class VerifyApiToken
         $token = $request->get('__token') ?? null;
 
         if (!$token || !is_array($token)) {
-            throw new ApiException("Token Invalid", 400);
+            throw new ApiException('Token Invalid', 400);
         }
 
         if (VerifyTokenService::tokenIsValid($token)) {
             return $next($request);
         }
 
-        throw new ApiException("Token Invalid", 400);
+        throw new ApiException('Token Invalid', 400);
     }
 }

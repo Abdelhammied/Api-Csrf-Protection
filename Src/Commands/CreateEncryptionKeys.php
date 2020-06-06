@@ -2,10 +2,9 @@
 
 namespace ApiCsrfProtection\Commands;
 
-
-use phpseclib\Crypt\RSA;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use phpseclib\Crypt\RSA;
 
 class CreateEncryptionKeys extends Command
 {
